@@ -14,24 +14,31 @@ if (-not (Test-Path $downloadsDir)) {
     try { New-Item -ItemType Directory -Path $downloadsDir -Force | Out-Null } catch {}
 }
 
-$listener = New-Object System.Net.HttpListener
-$prefix = "http://127.0.0.1:$port/"
-$listener.Prefixes.Add($prefix)
+$listener = $null
+$port = 5050
+while ($port -le 5065) {
+    try {
+        $prefix = "http://127.0.0.1:$port/"
+        $testListener = New-Object System.Net.HttpListener
+        $testListener.Prefixes.Add($prefix)
+        $testListener.Start()
+        $listener = $testListener
+        break
+    } catch {
+        $port++
+    }
+}
 
-try {
-    $listener.Start()
-} catch {
-    $port = 5055
-    $prefix = "http://127.0.0.1:$port/"
-    $listener = New-Object System.Net.HttpListener
-    $listener.Prefixes.Add($prefix)
-    $listener.Start()
+if (-not $listener) {
+    Write-Error "No se pudo encontrar un puerto libre entre 5050 y 5065."
+    exit 1
 }
 
 Write-Host "===========================================================" -ForegroundColor Red
 Write-Host "   ★ PERSONA 5 PHANTOM THIEVES - SERVIDOR POWERSHELL ★   " -ForegroundColor Yellow
 Write-Host "   Servidor activo en: $prefix" -ForegroundColor White
 Write-Host "   Carpeta destino:   $downloadsDir" -ForegroundColor Gray
+Write-Host "   Presiona CTRL + C para detener el servidor." -ForegroundColor Yellow
 Write-Host "===========================================================" -ForegroundColor Red
 
 # Open browser
@@ -208,11 +215,12 @@ while ($listener.IsListening) {
         $jobId = "steal_" + [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
 
         # Build args
+        $threadVal = if ($opts.threads) { [string]$opts.threads } else { "16" }
         $argsList = @(
             "--ffmpeg-location", $binDir,
             "-P", $downloadsDir,
             "-o", "%(title)s.%(ext)s",
-            "-N", (if ($opts.threads) { [string]$opts.threads } else { "16" }),
+            "-N", $threadVal,
             "--no-mtime",
             "--progress",
             "--newline"

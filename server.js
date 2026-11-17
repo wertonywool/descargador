@@ -372,10 +372,35 @@ const server = http.createServer((req, res) => {
   res.end('Not Found');
 });
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`====================================================`);
-  console.log(`  ★ PERSONA 5 PHANTOM THIEVES VIDEO DOWNLOADER ★  `);
-  console.log(`  Server running at: http://127.0.0.1:${PORT}`);
-  console.log(`  Target Downloads folder: ${DOWNLOADS_DIR}`);
-  console.log(`====================================================`);
-});
+// Port finder with automatic browser opener
+function startServer(portToTry, attemptsLeft = 10) {
+  server.once('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.log(`[AVISO] Puerto ${portToTry} ocupado. Probando puerto ${portToTry + 1}...`);
+      if (attemptsLeft > 0) {
+        startServer(portToTry + 1, attemptsLeft - 1);
+      } else {
+        console.error('[ERROR] No se pudo encontrar ningun puerto libre.');
+        process.exit(1);
+      }
+    } else {
+      console.error('[ERROR]', err.message);
+    }
+  });
+
+  server.listen(portToTry, '127.0.0.1', () => {
+    console.log(`====================================================`);
+    console.log(`  ★ PERSONA 5 PHANTOM THIEVES VIDEO DOWNLOADER ★  `);
+    console.log(`  Servidor activo en: http://127.0.0.1:${portToTry}`);
+    console.log(`  Carpeta destino:   ${DOWNLOADS_DIR}`);
+    console.log(`  Presiona CTRL + C para detener el servidor.`);
+    console.log(`====================================================`);
+    
+    // Open default browser on the active port
+    try {
+      exec(`start "" "http://127.0.0.1:${portToTry}"`);
+    } catch (e) {}
+  });
+}
+
+startServer(PORT);
