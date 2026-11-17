@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERSONA 5 // VIDEO HEIST // CMD DOWNLOADER</title>
+  <link rel="icon" type="image/x-icon" href="/icon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700;800&family=Montserrat:ital,wght@0,800;0,900;1,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --p5-red: #e60012;
+      --p5-dark-red: #9e000c;
+      --p5-black: #0d0d0f;
+      --p5-card-black: #141418;
+      --p5-white: #ffffff;
+      --p5-yellow: #ffe600;
+      --p5-gray: #24242c;
+      --p5-text-gray: #a5a5b5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--p5-black);
+      color: var(--p5-white);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(rgba(230, 0, 18, 0.15) 2px, transparent 2px),
+        linear-gradient(135deg, #09090b 0%, #15151c 50%, #0d0d10 100%);
+      background-size: 24px 24px, 100% 100%;
+      position: relative;
+    }
+
+    /* Dramatic Persona 5 Diagonal Stripe Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        -35deg,
+        rgba(230, 0, 18, 0.04) 0px,
+        rgba(230, 0, 18, 0.04) 40px,
+        transparent 40px,
+        transparent 80px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Persona 5 Header & Calling Card */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transform: skew(-6deg) rotate(-1deg);
+      background: var(--p5-red);
+      padding: 8px 24px;
+      box-shadow: 6px 6px 0px var(--p5-white), 10px 10px 0px var(--p5-black);
+      border: 3px solid var(--p5-black);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .logo-badge:hover {
+      transform: skew(-4deg) rotate(1deg) scale(1.02);
+    }
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(2px 2px 0px #000);
+    }
+    .logo-text h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.6rem;
+      letter-spacing: 2px;
+      color: var(--p5-white);
+      line-height: 0.9;
+      text-shadow: 3px 3px 0px #000;
+    }
+    .logo-text p {
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: var(--p5-yellow);
+      text-transform: uppercase;
+      text-shadow: 1px 1px 0px #000;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .take-your-time {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--p5-white);
+      color: var(--p5-black);
+      padding: 6px 14px;
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transform: skew(-8deg);
+      box-shadow: 4px 4px 0px var(--p5-red);
+      border: 2px solid var(--p5-black);
+    }
+    .take-your-time span.star {
+      color: var(--p5-red);
+      font-size: 1.2rem;
+      animation: spinStar 3s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spinStar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-sound {
+      background: var(--p5-card-black);
+      border: 2px solid var(--p5-white);
+      color: var(--p5-yellow);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      cursor: pointer;
+      transform: skew(-6deg);
+      transition: 0.15s;
+    }
+    .btn-sound:hover {
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+    }
+
+    /* Calling Card Box */
+    .calling-card {
+      background: var(--p5-card-black);
+      border: 4px solid var(--p5-white);
+      box-shadow: 12px 12px 0px var(--p5-red), 18px 18px 0px rgba(0,0,0,0.8);
+      padding: 26px 28px;
+      margin-bottom: 30px;
+      position: relative;
+      transform: skew(-2deg);
+    }
+    .calling-card::before {
+      content: "TAKE YOUR HEART";
+      position: absolute;
+      top: -16px;
+      right: 30px;
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      padding: 2px 16px;
+      border: 2px solid var(--p5-black);
+      box-shadow: 3px 3px 0px var(--p5-black);
+      transform: skew(-8deg) rotate(2deg);
+    }
+
+    .calling-card-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      color: var(--p5-red);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 2px 2px 0px #000;
+    }
+
+    .calling-card-desc {
+      font-size: 0.85rem;
+      color: var(--p5-text-gray);
+      margin-bottom: 20px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+    .calling-card-desc strong {
+      color: var(--p5-white);
+    }
+
+    /* Target URL Input Bar */
+    .input-wrapper {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .input-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .input-box input {
+      width: 100%;
+      background: #000000;
+      border: 3px solid var(--p5-white);
+      color: var(--p5-white);
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      font-family: 'JetBrains Mono', monospace;
+      outline: none;
+      box-shadow: inset 3px 3px 0px rgba(255,255,255,0.1);
+      transition: all 0.2s;
+      user-select: text;
+    }
+    .input-box input:focus {
+      border-color: var(--p5-red);
+      box-shadow: 0 0 15px rgba(230,0,18,0.7), inset 3px 3px 0px rgba(230,0,18,0.3);
+    }
+    .input-box input::placeholder {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .btn-paste {
+      background: var(--p5-white);
+      color: var(--p5-black);
+      border: 3px solid var(--p5-black);
+      padding: 12px 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px var(--p5-yellow);
+      transform: skew(-6deg);
+      transition: 0.15s;
+    }
+    .btn-paste:hover {
+      background: var(--p5-yellow);
+      transform: skew(-6deg) scale(1.05);
+    }
+
+    /* Battle Options Section */
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: var(--p5-white);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 2px 2px 0px #000;
+    }
+    .section-title::before {
+      content: "";
+      width: 8px;
+      height: 24px;
+      background: var(--p5-red);
+      display: inline-block;
+      transform: skew(-15deg);
+    }
+
+    .battle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .mode-card {
+      background: var(--p5-black);
+      border: 3px solid #333;
+      padding: 16px 14px;
+      cursor: pointer;
+      position: relative;
+      transform: skew(-4deg);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .mode-card:hover {
+      border-color: var(--p5-white);
+      transform: skew(-4deg) translateY(-4px);
+    }
+    .mode-card.active {
+      border-color: var(--p5-red);
+      background: #180507;
+      box-shadow: 6px 6px 0px var(--p5-red), 10px 10px 0px var(--p5-black);
+      transform: skew(-4deg) scale(1.02);
+    }
+    .mode-card .mode-tag {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 2px 8px;
+      background: #333;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .mode-card.active .mode-tag {
+      background: var(--p5-red);
+      color: #fff;
+    }
+    .mode-card .mode-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--p5-white);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .mode-card.active .mode-title {
+      color: var(--p5-yellow);
+    }
+    .mode-card .mode-desc {
+      font-size: 0.75rem;
+      color: var(--p5-text-gray);
+      font-weight: 800;
+    }
+
+    /* Speed & Extra Toggles */
+    .extras-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(0,0,0,0.4);
+      padding: 14px 18px;
+      border: 2px dashed #3a3a46;
+      margin-bottom: 24px;
+      align-items: center;
+      transform: skew(-2deg);
+    }
+    .extra-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .extra-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--p5-red);
+      cursor: pointer;
+    }
+    .extra-item span {
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: var(--p5-white);
+    }
+    .extra-badge {
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      padding: 2px 6px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      border-radius: 2px;
+    }
+
+    /* Big Action Buttons (All-Out Attack Execution) */
+    .action-triggers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn-allout {
+      flex: 2;
+      min-width: 260px;
+      background: var(--p5-red);
+      color: var(--p5-white);
+      border: 4px solid var(--p5-white);
+      padding: 18px 24px;
+      font-family: 'Bangers', cursive;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 8px 8px 0px var(--p5-black), 12px 12px 0px var(--p5-yellow);
+      transform: skew(-8deg) rotate(-1deg);
+      transition: all 0.15s ease-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 3px 3px 0px #000;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-allout:hover:not(:disabled) {
+      background: #ff0019;
+      transform: skew(-6deg) rotate(0deg) scale(1.03);
+      box-shadow: 10px 10px 0px var(--p5-black), 16px 16px 0px var(--p5-yellow);
+    }
+    .btn-allout:active:not(:disabled) {
+      transform: skew(-4deg) translate(4px, 4px);
+      box-shadow: 4px 4px 0px var(--p5-black);
+    }
+    .btn-allout:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      filter: grayscale(0.5);
+    }
+
+    .btn-cmd-window {
+      flex: 1;
+      min-width: 200px;
+      background: var(--p5-white);
+      color: var(--p5-black);
+      border: 4px solid var(--p5-black);
+      padding: 16px 18px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 6px 6px 0px var(--p5-red);
+      transform: skew(-6deg);
+      transition: 0.15s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cmd-window:hover {
+      background: var(--p5-yellow);
+      transform: skew(-6deg) scale(1.03);
+    }
+
+    .btn-secondary {
+      background: var(--p5-card-black);
+      color: var(--p5-white);
+      border: 2px solid #555;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      cursor: pointer;
+      transform: skew(-4deg);
+      transition: 0.15s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--p5-white);
+      background: #252530;
+    }
+
+    /* Terminal Console: Futaba / NAVI Style */
+    .terminal-container {
+      background: #08080a;
+      border: 4px solid var(--p5-red);
+      box-shadow: 8px 8px 0px var(--p5-black);
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .terminal-header {
+      background: var(--p5-red);
+      color: var(--p5-white);
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+    }
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--p5-white);
+    }
+    .terminal-dot:nth-child(2) { background: var(--p5-yellow); }
+    .terminal-dot:nth-child(3) { background: var(--p5-black); }
+
+    /* Meters Bar */
+    .metrics-bar {
+      display: flex;
+      flex-wrap: wrap;
+      background: #101015;
+      border-bottom: 2px solid #222;
+      padding: 10px 16px;
+      gap: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .metric-box {
+      display: flex;
+      gap: 8px;
+    }
+    .metric-label {
+      color: var(--p5-text-gray);
+    }
+    .metric-val {
+      color: var(--p5-yellow);
+      font-weight: 700;
+    }
+
+    /* Animated Hazard Progress Bar */
+    .progress-track {
+      width: 100%;
+      height: 24px;
+      background: #181820;
+      border-bottom: 2px solid #222;
+      position: relative;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--p5-red),
+        var(--p5-red) 12px,
+        #ffffff 12px,
+        #ffffff 20px
+      );
+      transition: width 0.25s linear;
+      position: relative;
+    }
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      color: #000;
+      background: rgba(255, 230, 0, 0.9);
+      padding: 1px 8px;
+      letter-spacing: 1px;
+      font-weight: 900;
+      border: 1px solid #000;
+      z-index: 2;
+    }
+
+    /* Live Output Lines */
+    .terminal-body {
+      padding: 14px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      max-height: 240px;
+      overflow-y: auto;
+      color: #4af626;
+      user-select: text;
+      line-height: 1.4;
+      background: #060608;
+    }
+    .terminal-line {
+      margin-bottom: 3px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .terminal-line.cmd {
+      color: var(--p5-yellow);
+      font-weight: 700;
+    }
+    .terminal-line.err {
+      color: #ff3b4e;
+    }
+    .terminal-line.success {
+      color: #2eff8b;
+      font-weight: 800;
+    }
+
+    /* Command String Box */
+    .cmd-preview-card {
+      background: #121217;
+      border-left: 4px solid var(--p5-yellow);
+      padding: 12px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: #ccc;
+      transform: skew(-2deg);
+      user-select: text;
+    }
+    .cmd-preview-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+    .btn-copy-small {
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      border: none;
+      padding: 6px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-weight: 900;
+      transform: skew(-4deg);
+    }
+    .btn-copy-small:hover {
+      background: var(--p5-white);
+    }
+
+    /* Toast Notification */
+    .p5-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--p5-red);
+      color: var(--p5-white);
+      padding: 14px 22px;
+      border: 3px solid var(--p5-white);
+      box-shadow: 6px 6px 0px var(--p5-black);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      transform: skew(-6deg) translateY(100px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .p5-toast.show {
+      transform: skew(-6deg) translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 2px solid #222;
+      font-size: 0.8rem;
+      color: var(--p5-text-gray);
+      font-weight: 800;
+    }
+    footer a {
+      color: var(--p5-yellow);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-badge">
+        <img src="/icon.png" alt="P5 Icon" class="logo-icon">
+        <div class="logo-text">
+          <h1>VIDEO HEIST // CMD</h1>
+          <p>Phantom Thieves Engine</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="take-your-time">
+          <span class="star">★</span> TAKE YOUR TIME
+        </div>
+        <button class="btn-sound" id="btnSoundToggle" title="Activar/Silenciar Efectos de Sonido">
+          🔊 SFX: ON
+        </button>
+      </div>
+    </header>
+
+    <!-- Offline / File Protocol Notice -->
+    <div id="fileProtocolNotice" style="display: none; background: #9e000c; border: 3px solid #fff; padding: 12px 18px; margin-bottom: 20px; transform: skew(-3deg); box-shadow: 6px 6px 0px #000;">
+      <div style="font-family: 'Bebas Neue', cursive; font-size: 1.3rem; color: var(--p5-yellow); letter-spacing: 1px;">
+        ⚠️ AVISO: HAS ABIERTO EL ARCHIVO HTML DIRECTAMENTE
+      </div>
+      <div style="font-size: 0.85rem; font-weight: 800; color: #fff; margin-top: 4px;">
+        Para descargar videos automáticamente con un clic, ejecuta <strong>iniciar.bat</strong> en la carpeta del proyecto. 
+        ¡Aún puedes generar y copiar los comandos de CMD abajo!
+      </div>
+    </div>
+
+    <!-- Calling Card Input Section -->
+    <section class="calling-card">
+      <div class="calling-card-title">
+        <span>⚔️</span> AVISO DE ROBO DE CONTENIDO
+      </div>
+      <p class="calling-card-desc">
+        A todos los servidores de video de la red: <strong>Hemos decidido robar este contenido a máxima velocidad</strong> vía CMD local sin restricciones ni anuncios.
+      </p>
+
+      <div class="input-wrapper">
+        <div class="input-box">
+          <input type="text" id="targetUrl" placeholder="Pega el enlace del video aquí (YouTube, TikTok, Twitter/X, Instagram, etc)..." autofocus>
+        </div>
+        <button class="btn-paste" id="btnPaste">📋 PEGAR</button>
+      </div>
+
+      <!-- Strategy / Format Battle Grid -->
+      <div class="section-title">SELECCIONA TU ESTRATEGIA (FORMATO)</div>
+      <div class="battle-grid">
+        <div class="mode-card active" data-mode="allout">
+          <span class="mode-tag">RECOMENDADO</span>
+          <div class="mode-title">ALL-OUT ATTACK</div>
+          <div class="mode-desc">Máxima Calidad (4K / 1080p 60fps MP4 + Audio de alta fidelidad)</div>
+        </div>
+
+        <div class="mode-card" data-mode="swift">
+          <span class="mode-tag">ULTRA RÁPIDO</span>
+          <div class="mode-title">SWIFT STRIKE</div>
+          <div class="mode-desc">Descarga Instantánea (720p / 1080p MP4 sin recodificación)</div>
+        </div>
+
+        <div class="mode-card" data-mode="audio">
+          <span class="mode-tag">SOLO AUDIO</span>
+          <div class="mode-title">PERSONA BEAT</div>
+          <div class="mode-desc">Extraer Música en MP3 a 320 kbps con carátula</div>
+        </div>
+
+        <div class="mode-card" data-mode="mkv">
+          <span class="mode-tag">ARCHIVAL</span>
+          <div class="mode-title">SHADOW VAULT</div>
+          <div class="mode-desc">Formato MKV Puro con todos los subtítulos y pistas</div>
+        </div>
+      </div>
+
+      <!-- Turbo & Extra Options -->
+      <div class="extras-row">
+        <label class="extra-item">
+          <input type="checkbox" id="chkTurbo" checked>
+          <span>TURBO CMD MULTI-STREAM (-N 16 HILOS)</span>
+          <span class="extra-badge">SUPER RÁPIDO</span>
+        </label>
+        <label class="extra-item">
+          <input type="checkbox" id="chkPlaylist">
+          <span>DESCARGAR PLAYLIST COMPLETA</span>
+        </label>
+      </div>
+
+      <!-- Big Action Buttons -->
+      <div class="action-triggers">
+        <button class="btn-allout" id="btnExecute">
+          <span>⚔️</span> ¡ROBAR VIDEO AHORA!
+        </button>
+        <button class="btn-cmd-window" id="btnNativeCmd" title="Abre una ventana de CMD real en Windows para ver la ejecución">
+          <span>💻</span> ABRIR EN VENTANA CMD
+        </button>
+      </div>
+
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="btn-secondary" id="btnOpenFolder">
+          📂 ABRIR CARPETA DE DESCARGAS
+        </button>
+        <button class="btn-secondary" id="btnCancel" style="display: none; background: #600;">
+          🛑 ABORTAR OPERACIÓN
+        </button>
+      </div>
+    </section>
+
+    <!-- Command Line Preview -->
+    <div class="cmd-preview-card">
+      <div style="color: var(--p5-yellow); font-weight: bold; margin-right: 6px;">CMD></div>
+      <div class="cmd-preview-text" id="cmdPreviewText">yt-dlp ...</div>
+      <button class="btn-copy-small" id="btnCopyCmd">COPIAR COMANDO</button>
+    </div>
+
+    <!-- Terminal Console Section -->
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--p5-yellow);">▲</span> TERMINAL CMD PHANTOM // FUTABA HUD
+        </div>
+        <div class="terminal-dots">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+        </div>
+      </div>
+
+      <!-- Realtime Metrics -->
+      <div class="metrics-bar">
+        <div class="metric-box">
+          <span class="metric-label">ESTADO:</span>
+          <span class="metric-val" id="valStatus">EN ESPERA DE ORDEN</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">VELOCIDAD:</span>
+          <span class="metric-val" id="valSpeed">-- MB/s</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">TAMAÑO:</span>
+          <span class="metric-val" id="valSize">--</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">ETA:</span>
+          <span class="metric-val" id="valEta">--:--</span>
+        </div>
+      </div>
+
+      <!-- Animated Progress Bar -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+        <div class="progress-text" id="progressText">0%</div>
+      </div>
+
+      <!-- Live Terminal Log Stream -->
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-line cmd">> Sistema local listo. Binarios de yt-dlp y ffmpeg activos.</div>
+        <div class="terminal-line">> Pega una URL y presiona "¡ROBAR VIDEO AHORA!" o "ABRIR EN VENTANA CMD".</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div>PERSONA 5 VIDEO DOWNLOADER // MOTOR LOCAL YT-DLP & FFMPEG</div>
+      <div>Guardando en: <span id="lblDestPath" style="color: #fff;">.../Downloads/Persona5_Downloads</span></div>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="p5-toast" id="p5Toast">
+    <span id="toastIcon">★</span> <span id="toastMsg">¡LISTO!</span>
+  </div>
+
+  <script>
+    // Audio Synthesizer (Persona 5 Sound FX)
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        if (type === 'click') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.06);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.06);
+        } else if (type === 'allout') {
+          // Persona 5 Slash/Impact Sound
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.exponentialRampToValueAtTime(80, now + 0.25);
+          gain.gain.setValueAtTime(0.3, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        } else if (type === 'victory') {
+          // P5 All-Out Victory Jingle (arpeggio)
+          const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+          notes.forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+            gain.gain.setValueAtTime(0.2, now + idx * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.3);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + idx * 0.08);
+            osc.stop(now + idx * 0.08 + 0.3);
+          });
+        }
+      } catch (e) {
+        console.warn('Audio play error:', e);
+      }
+    }
+
+    // UI Elements
+    const targetUrlInput = document.getElementById('targetUrl');
+    const btnPaste = document.getElementById('btnPaste');
+    const btnExecute = document.getElementById('btnExecute');
+    const btnNativeCmd = document.getElementById('btnNativeCmd');
+    const btnCopyCmd = document.getElementById('btnCopyCmd');
+    const btnOpenFolder = document.getElementById('btnOpenFolder');
+    const btnCancel = document.getElementById('btnCancel');
+    const btnSoundToggle = document.getElementById('btnSoundToggle');
+    const chkTurbo = document.getElementById('chkTurbo');
+    const chkPlaylist = document.getElementById('chkPlaylist');
+    const cmdPreviewText = document.getElementById('cmdPreviewText');
+    const terminalBody = document.getElementById('terminalBody');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const valStatus = document.getElementById('valStatus');
+    const valSpeed = document.getElementById('valSpeed');
+    const valSize = document.getElementById('valSize');
+    const valEta = document.getElementById('valEta');
+    const lblDestPath = document.getElementById('lblDestPath');
+    const p5Toast = document.getElementById('p5Toast');
+    const toastMsg = document.getElementById('toastMsg');
+
+    let currentMode = 'allout';
+    let currentJobId = null;
+    let sseSource = null;
+
+    // Toast message
+    function showToast(msg, icon = '★') {
+      document.getElementById('toastIcon').textContent = icon;
+      toastMsg.textContent = msg;
+      p5Toast.classList.add('show');
+      setTimeout(() => {
+        p5Toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Sound toggle
+    btnSoundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      btnSoundToggle.textContent = soundEnabled ? '🔊 SFX: ON' : '🔇 SFX: OFF';
+      btnSoundToggle.style.color = soundEnabled ? 'var(--p5-yellow)' : '#888';
+      if (soundEnabled) playSound('click');
+    });
+
+    // Mode Card Selector
+    document.querySelectorAll('.mode-card').forEach(card => {
+      card.addEventListener('click', () => {
+        playSound('click');
+        document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        currentMode = card.getAttribute('data-mode');
+        updateCmdPreview();
+      });
+    });
+
+    // Options changes
+    chkTurbo.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
+    chkPlaylist.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
+    targetUrlInput.addEventListener('input', updateCmdPreview);
+
+    // Paste button
+    btnPaste.addEventListener('click', async () => {
+      playSound('click');
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text) {
+          targetUrlInput.value = text;
+          updateCmdPreview();
+          showToast('¡ENLACE PEGADO!');
+        }
+      } catch (err) {
+        showToast('USA CTRL+V PARA PEGAR');
+      }
+    });
+
+    // Append log line
+    function addLog(text, type = '') {
+      const line = document.createElement('div');
+      line.className = 'terminal-line ' + type;
+      line.textContent = text;
+      terminalBody.appendChild(line);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    // Build options payload
+    function getDownloadOptions() {
+      return {
+        url: targetUrlInput.value.trim(),
+        mode: currentMode,
+        threads: chkTurbo.checked ? 16 : 4,
+        playlist: chkPlaylist.checked
+      };
+    }
+
+    // Check protocol
+    if (window.location.protocol === 'file:') {
+      const notice = document.getElementById('fileProtocolNotice');
+      if (notice) notice.style.display = 'block';
+    }
+
+    // Build client-side fallback CMD string
+    function buildClientCmdString(opts) {
+      const threads = opts.threads || 16;
+      const playlist = opts.playlist ? "" : "--no-playlist";
+      let fmt = "";
+      if (opts.mode === 'allout') {
+        fmt = '-f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --merge-output-format mp4';
+      } else if (opts.mode === 'swift') {
+        fmt = '-f "b[ext=mp4]/best[ext=mp4]/best"';
+      } else if (opts.mode === 'audio') {
+        fmt = '-x --audio-format mp3 --audio-quality 0';
+      } else if (opts.mode === 'mkv') {
+        fmt = '-f "bv*+ba/b" --merge-output-format mkv';
+      }
+      const target = opts.url ? `"${opts.url}"` : "[ENLACE_DEL_VIDEO]";
+      return `yt-dlp -P "%USERPROFILE%\\Downloads\\Persona5_Descargas" -o "%(title)s.%(ext)s" -N ${threads} --no-mtime --progress ${playlist} ${fmt} ${target}`;
+    }
+
+    // Update CMD Preview
+    async function updateCmdPreview() {
+      const opts = getDownloadOptions();
+      const localCmd = buildClientCmdString(opts);
+      cmdPreviewText.textContent = localCmd;
+
+      if (!opts.url || window.location.protocol === 'file:') {
+        return;
+      }
+      try {
+        const res = await fetch('/api/cmd-string', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(opts)
+        });
+        const data = await res.json();
+        if (data && data.ok) {
+          cmdPreviewText.textContent = data.command;
+        }
+      } catch (e) {
+        // Fallback to client-generated command
+      }
+    }
+
+    // Copy CMD command
+    btnCopyCmd.addEventListener('click', () => {
+      playSound('click');
+      const cmd = cmdPreviewText.textContent;
+      navigator.clipboard.writeText(cmd);
+      showToast('¡COMANDO COPIADO AL PORTAPAPELES!');
+    });
+
+    // Check backend status on load
+    async function checkStatus() {
+      try {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        if (data.ok) {
+          lblDestPath.textContent = data.downloadsDir;
+          addLog(`[INICIALIZADO] Motor: yt-dlp OK | FFmpeg: ${data.ffmpeg ? 'OK' : 'NO'}`);
+          addLog(`[RUTA DESTINO] ${data.downloadsDir}`);
+        }
+      } catch (e) {
+        addLog('[ERROR] No se pudo conectar con el servidor local.', 'err');
+      }
+    }
+
+    // Open Downloads Folder
+    btnOpenFolder.addEventListener('click', async () => {
+      playSound('click');
+      try {
+        await fetch('/api/open-folder', { method: 'POST' });
+        showToast('CARPETA DE DESCARGAS ABIERTA');
+      } catch (e) {
+        showToast('ERROR AL ABRIR CARPETA');
+      }
+    });
+
+    // Launch in Native CMD Window
+    btnNativeCmd.addEventListener('click', async () => {
+      const opts = getDownloadOptions();
+      if (!opts.url) {
+        showToast('INGRESA UNA URL PRIMERO');
+        targetUrlInput.focus();
+        return;
+      }
+      playSound('allout');
+      try {
+        addLog('[CMD NATIVO] Despachando ventana de comando de Windows...', 'cmd');
+        const res = await fetch('/api/launch-cmd', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(opts)
+        });
+        const data = await res.json();
+        if (data.ok) {
+          showToast('¡VENTANA DE CMD ABIERTA!');
+          addLog('[CMD NATIVO] La descarga continuará en la consola de Windows.', 'success');
+        } else {
+          showToast('ERROR: ' + data.error);
+        }
+      } catch (e) {
+        showToast('ERROR AL ABRIR CMD');
+      }
+    });
+
+    // Execute Download (In-App Stream)
+    btnExecute.addEventListener('click', async () => {
+      const opts = getDownloadOptions();
+      if (!opts.url) {
+        showToast('INGRESA UNA URL PRIMERO');
+        targetUrlInput.focus();
+        return;
+      }
+
+      playSound('allout');
+      btnExecute.disabled = true;
+      btnCancel.style.display = 'inline-block';
+      valStatus.textContent = 'ROBANDO CONTENIDO...';
+      valStatus.style.color = 'var(--p5-yellow)';
+      progressBar.style.width = '0%';
+      progressText.textContent = '0%';
+
+      addLog('------------------------------------------------------------');
+      addLog(`[ALL-OUT ATTACK] Iniciando descarga: ${opts.url}`, 'cmd');
+
+      try {
+        const res = await fetch('/api/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(opts)
+        });
+        const data = await res.json();
+        if (!data.ok) {
+          addLog('[ERROR] ' + data.error, 'err');
+          btnExecute.disabled = false;
+          btnCancel.style.display = 'none';
+          valStatus.textContent = 'ERROR EN OPERACIÓN';
+          valStatus.style.color = 'var(--p5-red)';
+          return;
+        }
+
+        currentJobId = data.jobId;
+        connectSSE(currentJobId);
+      } catch (err) {
+        addLog('[ERROR] Fallo de conexión: ' + err.message, 'err');
+        btnExecute.disabled = false;
+        btnCancel.style.display = 'none';
+      }
+    });
+
+    // SSE Stream
+    function connectSSE(jobId) {
+      if (sseSource) {
+        sseSource.close();
+      }
+
+      sseSource = new EventSource(`/api/stream?jobId=${jobId}`);
+
+      sseSource.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+
+          if (data.type === 'init') {
+            data.logs.forEach(l => addLog(l));
+          } else if (data.type === 'log') {
+            addLog(data.line);
+            if (data.percent !== undefined) {
+              progressBar.style.width = data.percent + '%';
+              progressText.textContent = data.percent + '%';
+            }
+            if (data.speed) valSpeed.textContent = data.speed;
+            if (data.size) valSize.textContent = data.size;
+            if (data.eta) valEta.textContent = data.eta;
+          } else if (data.type === 'done') {
+            sseSource.close();
+            btnExecute.disabled = false;
+            btnCancel.style.display = 'none';
+
+            if (data.code === 0) {
+              progressBar.style.width = '100%';
+              progressText.textContent = '100% COMPLETE';
+              valStatus.textContent = '¡BOTÍN ASEGURADO!';
+              valStatus.style.color = '#2eff8b';
+              addLog('★ [TAKE YOUR HEART] ¡Descarga finalizada con éxito!', 'success');
+              playSound('victory');
+              showToast('¡DESCARGA COMPLETADA CON ÉXITO!');
+            } else {
+              valStatus.textContent = 'MISIÓN FALLIDA (' + data.code + ')';
+              valStatus.style.color = 'var(--p5-red)';
+              addLog(`[FINALIZADO] Código de salida: ${data.code}`, 'err');
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+
+      sseSource.onerror = () => {
+        // SSE disconnected or done
+      };
+    }
+
+    // Cancel Job
+    btnCancel.addEventListener('click', async () => {
+      playSound('click');
+      if (currentJobId) {
+        await fetch('/api/cancel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jobId: currentJobId })
+        });
+        showToast('MISIÓN ABORTADA');
+        btnCancel.style.display = 'none';
+        btnExecute.disabled = false;
+        valStatus.textContent = 'OPERACIÓN CANCELADA';
+      }
+    });
+
+    // Init
+    checkStatus();
+    updateCmdPreview();
+  </script>
+</body>
+</html>

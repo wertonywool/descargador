@@ -1,0 +1,11 @@
+# Ignorar binarios pesados (superan los 100MB de GitHub)
+# iniciar.bat los descarga automáticamente al iniciar
+bin/*.exe
+bin/*.zip
+bin/temp*
+
+# Ignorar descargas locales
+downloads/
+node_modules/
+.DS_Store
+Thumbs.db
