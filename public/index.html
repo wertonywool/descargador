@@ -13,11 +13,11 @@
       --p5-red: #e60012;
       --p5-dark-red: #9e000c;
       --p5-black: #0d0d0f;
-      --p5-card-black: #141418;
+      --p5-card-black: #15151c;
       --p5-white: #ffffff;
       --p5-yellow: #ffe600;
       --p5-gray: #24242c;
-      --p5-text-gray: #a5a5b5;
+      --p5-text-gray: #b0b0c0;
     }
 
     * {
@@ -60,19 +60,19 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 24px 20px 60px;
       position: relative;
       z-index: 1;
     }
 
-    /* Persona 5 Header & Calling Card */
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       flex-wrap: wrap;
       gap: 15px;
     }
@@ -80,35 +80,36 @@
     .logo-badge {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       transform: skew(-6deg) rotate(-1deg);
       background: var(--p5-red);
-      padding: 8px 24px;
-      box-shadow: 6px 6px 0px var(--p5-white), 10px 10px 0px var(--p5-black);
+      padding: 6px 20px;
+      box-shadow: 5px 5px 0px var(--p5-white), 8px 8px 0px var(--p5-black);
       border: 3px solid var(--p5-black);
+      cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .logo-badge:hover {
       transform: skew(-4deg) rotate(1deg) scale(1.02);
     }
     .logo-icon {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
       filter: drop-shadow(2px 2px 0px #000);
     }
     .logo-text h1 {
       font-family: 'Bebas Neue', cursive;
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       letter-spacing: 2px;
       color: var(--p5-white);
       line-height: 0.9;
-      text-shadow: 3px 3px 0px #000;
+      text-shadow: 2px 2px 0px #000;
     }
     .logo-text p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 900;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       color: var(--p5-yellow);
       text-transform: uppercase;
       text-shadow: 1px 1px 0px #000;
@@ -117,26 +118,26 @@
     .top-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .take-your-time {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--p5-white);
       color: var(--p5-black);
-      padding: 6px 14px;
+      padding: 5px 12px;
       font-weight: 900;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 1px;
       transform: skew(-8deg);
-      box-shadow: 4px 4px 0px var(--p5-red);
+      box-shadow: 3px 3px 0px var(--p5-red);
       border: 2px solid var(--p5-black);
     }
     .take-your-time span.star {
       color: var(--p5-red);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       animation: spinStar 3s linear infinite;
       display: inline-block;
     }
@@ -150,8 +151,8 @@
       background: var(--p5-card-black);
       border: 2px solid var(--p5-white);
       color: var(--p5-yellow);
-      padding: 6px 12px;
-      font-size: 0.8rem;
+      padding: 5px 12px;
+      font-size: 0.75rem;
       font-weight: 900;
       cursor: pointer;
       transform: skew(-6deg);
@@ -162,67 +163,57 @@
       color: var(--p5-black);
     }
 
-    /* Calling Card Box */
-    .calling-card {
+    /* STEP CARDS (Progressive Disclosure) */
+    .step-box {
       background: var(--p5-card-black);
-      border: 4px solid var(--p5-white);
-      box-shadow: 12px 12px 0px var(--p5-red), 18px 18px 0px rgba(0,0,0,0.8);
-      padding: 26px 28px;
-      margin-bottom: 30px;
+      border: 3px solid var(--p5-white);
+      box-shadow: 8px 8px 0px var(--p5-red), 12px 12px 0px rgba(0,0,0,0.8);
+      padding: 24px 26px;
+      margin-bottom: 22px;
       position: relative;
       transform: skew(-2deg);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .calling-card::before {
-      content: "TAKE YOUR HEART";
-      position: absolute;
-      top: -16px;
-      right: 30px;
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .step-tag {
       background: var(--p5-yellow);
       color: var(--p5-black);
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      padding: 2px 16px;
+      font-size: 1.1rem;
+      letter-spacing: 1.5px;
+      padding: 2px 12px;
       border: 2px solid var(--p5-black);
-      box-shadow: 3px 3px 0px var(--p5-black);
-      transform: skew(-8deg) rotate(2deg);
+      box-shadow: 2px 2px 0px var(--p5-black);
+      transform: skew(-6deg);
+      display: inline-block;
     }
 
-    .calling-card-title {
+    .step-title {
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       letter-spacing: 1.5px;
-      color: var(--p5-red);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: var(--p5-white);
       text-shadow: 2px 2px 0px #000;
     }
 
-    .calling-card-desc {
-      font-size: 0.85rem;
-      color: var(--p5-text-gray);
-      margin-bottom: 20px;
-      font-weight: 800;
-      line-height: 1.4;
-    }
-    .calling-card-desc strong {
-      color: var(--p5-white);
-    }
-
-    /* Target URL Input Bar */
+    /* Input Step 1 */
     .input-wrapper {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-top: 10px;
       flex-wrap: wrap;
     }
 
     .input-box {
       flex: 1;
-      min-width: 280px;
-      position: relative;
+      min-width: 250px;
     }
 
     .input-box input {
@@ -230,8 +221,8 @@
       background: #000000;
       border: 3px solid var(--p5-white);
       color: var(--p5-white);
-      padding: 14px 18px;
-      font-size: 1.1rem;
+      padding: 14px 16px;
+      font-size: 1.05rem;
       font-family: 'JetBrains Mono', monospace;
       outline: none;
       box-shadow: inset 3px 3px 0px rgba(255,255,255,0.1);
@@ -240,20 +231,20 @@
     }
     .input-box input:focus {
       border-color: var(--p5-red);
-      box-shadow: 0 0 15px rgba(230,0,18,0.7), inset 3px 3px 0px rgba(230,0,18,0.3);
+      box-shadow: 0 0 14px rgba(230,0,18,0.7), inset 3px 3px 0px rgba(230,0,18,0.3);
     }
     .input-box input::placeholder {
-      color: #666;
-      font-size: 0.95rem;
+      color: #777;
+      font-size: 0.9rem;
     }
 
     .btn-paste {
       background: var(--p5-white);
       color: var(--p5-black);
       border: 3px solid var(--p5-black);
-      padding: 12px 20px;
+      padding: 12px 18px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       letter-spacing: 1px;
       cursor: pointer;
       box-shadow: 4px 4px 0px var(--p5-yellow);
@@ -262,275 +253,238 @@
     }
     .btn-paste:hover {
       background: var(--p5-yellow);
-      transform: skew(-6deg) scale(1.05);
+      transform: skew(-6deg) scale(1.04);
     }
 
-    /* Battle Options Section */
-    .section-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.7rem;
-      letter-spacing: 2px;
-      color: var(--p5-white);
-      margin-bottom: 14px;
+    /* Quick helper badges below URL input */
+    .url-hints {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      text-shadow: 2px 2px 0px #000;
-    }
-    .section-title::before {
-      content: "";
-      width: 8px;
-      height: 24px;
-      background: var(--p5-red);
-      display: inline-block;
-      transform: skew(-15deg);
-    }
-
-    .battle-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .mode-card {
-      background: var(--p5-black);
-      border: 3px solid #333;
-      padding: 16px 14px;
-      cursor: pointer;
-      position: relative;
-      transform: skew(-4deg);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .mode-card:hover {
-      border-color: var(--p5-white);
-      transform: skew(-4deg) translateY(-4px);
-    }
-    .mode-card.active {
-      border-color: var(--p5-red);
-      background: #180507;
-      box-shadow: 6px 6px 0px var(--p5-red), 10px 10px 0px var(--p5-black);
-      transform: skew(-4deg) scale(1.02);
-    }
-    .mode-card .mode-tag {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      display: inline-block;
-      padding: 2px 8px;
-      background: #333;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .mode-card.active .mode-tag {
-      background: var(--p5-red);
-      color: #fff;
-    }
-    .mode-card .mode-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-      color: var(--p5-white);
-      margin-bottom: 4px;
-      line-height: 1;
-    }
-    .mode-card.active .mode-title {
-      color: var(--p5-yellow);
-    }
-    .mode-card .mode-desc {
+      gap: 10px;
+      margin-top: 10px;
       font-size: 0.75rem;
       color: var(--p5-text-gray);
       font-weight: 800;
-    }
-
-    /* Speed & Extra Toggles */
-    .extras-row {
-      display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      background: rgba(0,0,0,0.4);
-      padding: 14px 18px;
-      border: 2px dashed #3a3a46;
-      margin-bottom: 24px;
-      align-items: center;
-      transform: skew(-2deg);
     }
-    .extra-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-    .extra-item input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      accent-color: var(--p5-red);
-      cursor: pointer;
-    }
-    .extra-item span {
-      font-size: 0.85rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      color: var(--p5-white);
-    }
-    .extra-badge {
-      background: var(--p5-yellow);
-      color: var(--p5-black);
-      padding: 2px 6px;
-      font-size: 0.7rem;
-      font-weight: 900;
+    .url-hint-badge {
+      background: rgba(255,255,255,0.1);
+      padding: 2px 8px;
       border-radius: 2px;
     }
 
-    /* Big Action Buttons (All-Out Attack Execution) */
-    .action-triggers {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 30px;
+    /* Animated Reveal for Step 2 and beyond */
+    .reveal-section {
+      animation: slideInDown 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    .btn-allout {
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: skew(-2deg) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: skew(-2deg) translateY(0);
+      }
+    }
+
+    /* Format Selection Cards (Step 2) */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .format-card {
+      background: #0d0d10;
+      border: 3px solid #333;
+      padding: 14px 12px;
+      cursor: pointer;
+      transform: skew(-4deg);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+    .format-card:hover {
+      border-color: var(--p5-white);
+      transform: skew(-4deg) translateY(-3px);
+    }
+    .format-card.active {
+      border-color: var(--p5-red);
+      background: #200609;
+      box-shadow: 5px 5px 0px var(--p5-red), 8px 8px 0px var(--p5-black);
+      transform: skew(-4deg) scale(1.02);
+    }
+    .format-card .f-tag {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.75rem;
+      padding: 1px 6px;
+      background: #333;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .format-card.active .f-tag {
+      background: var(--p5-red);
+    }
+    .format-card .f-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.35rem;
+      color: var(--p5-white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .format-card.active .f-title {
+      color: var(--p5-yellow);
+    }
+    .format-card .f-desc {
+      font-size: 0.72rem;
+      color: var(--p5-text-gray);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    /* Small extra toggles row */
+    .sub-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed #333;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .extra-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+    .extra-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--p5-red);
+      cursor: pointer;
+    }
+
+    /* Step 3: Big Execution Action */
+    .action-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main-allout {
       flex: 2;
-      min-width: 260px;
+      min-width: 240px;
       background: var(--p5-red);
       color: var(--p5-white);
       border: 4px solid var(--p5-white);
-      padding: 18px 24px;
+      padding: 16px 20px;
       font-family: 'Bangers', cursive;
-      font-size: 2.2rem;
-      letter-spacing: 3px;
+      font-size: 2rem;
+      letter-spacing: 2px;
       cursor: pointer;
-      text-transform: uppercase;
-      box-shadow: 8px 8px 0px var(--p5-black), 12px 12px 0px var(--p5-yellow);
-      transform: skew(-8deg) rotate(-1deg);
+      box-shadow: 6px 6px 0px var(--p5-black), 10px 10px 0px var(--p5-yellow);
+      transform: skew(-6deg);
       transition: all 0.15s ease-out;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      text-shadow: 3px 3px 0px #000;
-      position: relative;
-      overflow: hidden;
+      gap: 10px;
+      text-shadow: 2px 2px 0px #000;
     }
-    .btn-allout:hover:not(:disabled) {
+    .btn-main-allout:hover:not(:disabled) {
       background: #ff0019;
-      transform: skew(-6deg) rotate(0deg) scale(1.03);
-      box-shadow: 10px 10px 0px var(--p5-black), 16px 16px 0px var(--p5-yellow);
+      transform: skew(-4deg) scale(1.03);
+      box-shadow: 8px 8px 0px var(--p5-black), 12px 12px 0px var(--p5-yellow);
     }
-    .btn-allout:active:not(:disabled) {
-      transform: skew(-4deg) translate(4px, 4px);
-      box-shadow: 4px 4px 0px var(--p5-black);
+    .btn-main-allout:active:not(:disabled) {
+      transform: skew(-4deg) translate(3px, 3px);
+      box-shadow: 3px 3px 0px var(--p5-black);
     }
-    .btn-allout:disabled {
+    .btn-main-allout:disabled {
       opacity: 0.6;
       cursor: not-allowed;
       filter: grayscale(0.5);
     }
 
-    .btn-cmd-window {
+    .btn-native-cmd {
       flex: 1;
-      min-width: 200px;
+      min-width: 170px;
       background: var(--p5-white);
       color: var(--p5-black);
-      border: 4px solid var(--p5-black);
-      padding: 16px 18px;
+      border: 3px solid var(--p5-black);
+      padding: 14px 14px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 6px 6px 0px var(--p5-red);
+      box-shadow: 4px 4px 0px var(--p5-red);
       transform: skew(-6deg);
       transition: 0.15s;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
-    .btn-cmd-window:hover {
+    .btn-native-cmd:hover {
       background: var(--p5-yellow);
       transform: skew(-6deg) scale(1.03);
     }
 
-    .btn-secondary {
-      background: var(--p5-card-black);
-      color: var(--p5-white);
-      border: 2px solid #555;
-      padding: 12px 16px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      cursor: pointer;
-      transform: skew(-4deg);
-      transition: 0.15s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--p5-white);
-      background: #252530;
-    }
-
-    /* Terminal Console: Futaba / NAVI Style */
-    .terminal-container {
+    /* Step 4: Progress / HUD Terminal (Focused view) */
+    .hud-box {
       background: #08080a;
       border: 4px solid var(--p5-red);
       box-shadow: 8px 8px 0px var(--p5-black);
+      margin-top: 14px;
       position: relative;
-      margin-bottom: 30px;
     }
-    .terminal-header {
+
+    .hud-header {
       background: var(--p5-red);
       color: var(--p5-white);
-      padding: 8px 16px;
+      padding: 6px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      letter-spacing: 1.5px;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
     }
-    .terminal-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .terminal-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--p5-white);
-    }
-    .terminal-dot:nth-child(2) { background: var(--p5-yellow); }
-    .terminal-dot:nth-child(3) { background: var(--p5-black); }
 
-    /* Meters Bar */
-    .metrics-bar {
+    .hud-metrics {
       display: flex;
       flex-wrap: wrap;
-      background: #101015;
-      border-bottom: 2px solid #222;
-      padding: 10px 16px;
-      gap: 20px;
+      background: #111116;
+      padding: 10px 14px;
+      gap: 16px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
+      border-bottom: 2px solid #222;
     }
-    .metric-box {
-      display: flex;
-      gap: 8px;
-    }
-    .metric-label {
+    .hud-metric-label {
       color: var(--p5-text-gray);
     }
-    .metric-val {
+    .hud-metric-val {
       color: var(--p5-yellow);
       font-weight: 700;
     }
 
-    /* Animated Hazard Progress Bar */
+    /* Hazard Progress Bar */
     .progress-track {
       width: 100%;
       height: 24px;
       background: #181820;
-      border-bottom: 2px solid #222;
       position: relative;
       overflow: hidden;
+      border-bottom: 2px solid #222;
     }
     .progress-fill {
       height: 100%;
@@ -543,7 +497,6 @@
         #ffffff 20px
       );
       transition: width 0.25s linear;
-      position: relative;
     }
     .progress-text {
       position: absolute;
@@ -551,102 +504,180 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #000;
-      background: rgba(255, 230, 0, 0.9);
-      padding: 1px 8px;
-      letter-spacing: 1px;
+      background: rgba(255, 230, 0, 0.95);
+      padding: 1px 10px;
       font-weight: 900;
       border: 1px solid #000;
       z-index: 2;
     }
 
-    /* Live Output Lines */
-    .terminal-body {
-      padding: 14px 16px;
+    /* Toggleable Live Terminal Log */
+    .hud-toggle-log {
+      display: block;
+      width: 100%;
+      background: #14141a;
+      border: none;
+      border-bottom: 1px solid #222;
+      color: var(--p5-yellow);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      max-height: 240px;
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .hud-toggle-log:hover {
+      background: #1e1e26;
+    }
+
+    .terminal-body {
+      padding: 12px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      max-height: 160px;
       overflow-y: auto;
-      color: #4af626;
+      color: #3bf33b;
       user-select: text;
       line-height: 1.4;
       background: #060608;
+      display: none; /* Collapsed by default so user isn't overwhelmed */
+    }
+    .terminal-body.open {
+      display: block;
     }
     .terminal-line {
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       white-space: pre-wrap;
       word-break: break-all;
     }
-    .terminal-line.cmd {
-      color: var(--p5-yellow);
-      font-weight: 700;
+
+    /* Victory Card (Shown when download completes) */
+    .victory-card {
+      background: #0f1c10;
+      border: 3px solid #2eff8b;
+      padding: 20px;
+      box-shadow: 6px 6px 0px #000;
+      margin-top: 16px;
+      text-align: center;
+      animation: slideInDown 0.3s ease-out;
     }
-    .terminal-line.err {
-      color: #ff3b4e;
-    }
-    .terminal-line.success {
+    .victory-title {
+      font-family: 'Bangers', cursive;
+      font-size: 2.2rem;
       color: #2eff8b;
-      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0px #000;
+      margin-bottom: 6px;
+    }
+    .victory-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-victory-folder {
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      border: 3px solid var(--p5-black);
+      padding: 10px 18px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px var(--p5-black);
+      transform: skew(-6deg);
+      transition: 0.15s;
+    }
+    .btn-victory-folder:hover {
+      background: #fff;
+      transform: skew(-6deg) scale(1.05);
+    }
+    .btn-victory-again {
+      background: #222;
+      color: #fff;
+      border: 2px solid #555;
+      padding: 10px 16px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transform: skew(-6deg);
+    }
+    .btn-victory-again:hover {
+      background: var(--p5-red);
+      border-color: #fff;
     }
 
-    /* Command String Box */
-    .cmd-preview-card {
-      background: #121217;
-      border-left: 4px solid var(--p5-yellow);
-      padding: 12px 16px;
+    /* Collapsible CMD Command Inspector (at bottom) */
+    .collapsible-cmd {
+      margin-top: 24px;
+      border: 1px dashed #333;
+      padding: 10px 14px;
+      background: rgba(0,0,0,0.3);
+      transform: skew(-2deg);
+    }
+    .collapsible-cmd-btn {
+      background: none;
+      border: none;
+      color: var(--p5-text-gray);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
+      cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 6px;
+      width: 100%;
+    }
+    .collapsible-cmd-btn:hover {
+      color: var(--p5-yellow);
+    }
+    .collapsible-cmd-content {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #222;
+    }
+    .collapsible-cmd-content.open {
+      display: block;
+    }
+    .cmd-text-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
       color: #ccc;
-      transform: skew(-2deg);
+      word-break: break-all;
+      background: #000;
+      padding: 8px 10px;
+      border: 1px solid #333;
       user-select: text;
+      margin-bottom: 8px;
     }
-    .cmd-preview-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-    }
-    .btn-copy-small {
+    .btn-copy-cmd {
       background: var(--p5-yellow);
       color: var(--p5-black);
       border: none;
       padding: 6px 12px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
-      letter-spacing: 1px;
       cursor: pointer;
       font-weight: 900;
-      transform: skew(-4deg);
-    }
-    .btn-copy-small:hover {
-      background: var(--p5-white);
     }
 
-    /* Toast Notification */
+    /* Toast */
     .p5-toast {
       position: fixed;
       bottom: 24px;
       right: 24px;
       background: var(--p5-red);
       color: var(--p5-white);
-      padding: 14px 22px;
+      padding: 12px 20px;
       border: 3px solid var(--p5-white);
       box-shadow: 6px 6px 0px var(--p5-black);
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 1.5px;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
       transform: skew(-6deg) translateY(100px);
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
     .p5-toast.show {
       transform: skew(-6deg) translateY(0);
@@ -659,15 +690,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      padding-top: 16px;
-      border-top: 2px solid #222;
-      font-size: 0.8rem;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+      font-size: 0.75rem;
       color: var(--p5-text-gray);
       font-weight: 800;
-    }
-    footer a {
-      color: var(--p5-yellow);
-      text-decoration: none;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -676,11 +704,11 @@
   <div class="container">
     <!-- Header -->
     <header>
-      <div class="logo-badge">
+      <div class="logo-badge" id="btnLogoReset" title="Reiniciar">
         <img src="/icon.png" alt="P5 Icon" class="logo-icon">
         <div class="logo-text">
-          <h1>VIDEO HEIST // CMD</h1>
-          <p>Phantom Thieves Engine</p>
+          <h1>VIDEO HEIST</h1>
+          <p>Phantom Thieves // CMD</p>
         </div>
       </div>
 
@@ -694,171 +722,160 @@
       </div>
     </header>
 
-    <!-- Offline / File Protocol Notice -->
-    <div id="fileProtocolNotice" style="display: none; background: #9e000c; border: 3px solid #fff; padding: 12px 18px; margin-bottom: 20px; transform: skew(-3deg); box-shadow: 6px 6px 0px #000;">
-      <div style="font-family: 'Bebas Neue', cursive; font-size: 1.3rem; color: var(--p5-yellow); letter-spacing: 1px;">
-        ⚠️ AVISO: HAS ABIERTO EL ARCHIVO HTML DIRECTAMENTE
+    <!-- PASO 1: PEGAR ENLACE (Siempre Visible y Principal) -->
+    <div class="step-box" id="step1Box">
+      <div class="step-header">
+        <div class="step-title">1. OBJETIVO: PEGA EL ENLACE DEL VIDEO</div>
+        <span class="step-tag">PASO 1</span>
       </div>
-      <div style="font-size: 0.85rem; font-weight: 800; color: #fff; margin-top: 4px;">
-        Para descargar videos automáticamente con un clic, ejecuta <strong>iniciar.bat</strong> en la carpeta del proyecto. 
-        ¡Aún puedes generar y copiar los comandos de CMD abajo!
-      </div>
-    </div>
-
-    <!-- Calling Card Input Section -->
-    <section class="calling-card">
-      <div class="calling-card-title">
-        <span>⚔️</span> AVISO DE ROBO DE CONTENIDO
-      </div>
-      <p class="calling-card-desc">
-        A todos los servidores de video de la red: <strong>Hemos decidido robar este contenido a máxima velocidad</strong> vía CMD local sin restricciones ni anuncios.
-      </p>
 
       <div class="input-wrapper">
         <div class="input-box">
-          <input type="text" id="targetUrl" placeholder="Pega el enlace del video aquí (YouTube, TikTok, Twitter/X, Instagram, etc)..." autofocus>
+          <input type="text" id="targetUrl" placeholder="Pega el link aquí (YouTube, TikTok, Twitter/X, Instagram, etc)..." autofocus autocomplete="off">
         </div>
         <button class="btn-paste" id="btnPaste">📋 PEGAR</button>
       </div>
 
-      <!-- Strategy / Format Battle Grid -->
-      <div class="section-title">SELECCIONA TU ESTRATEGIA (FORMATO)</div>
-      <div class="battle-grid">
-        <div class="mode-card active" data-mode="allout">
-          <span class="mode-tag">RECOMENDADO</span>
-          <div class="mode-title">ALL-OUT ATTACK</div>
-          <div class="mode-desc">Máxima Calidad (4K / 1080p 60fps MP4 + Audio de alta fidelidad)</div>
+      <div class="url-hints">
+        <span class="url-hint-badge">YouTube</span>
+        <span class="url-hint-badge">TikTok</span>
+        <span class="url-hint-badge">Instagram / Reels</span>
+        <span class="url-hint-badge">Twitter / X</span>
+        <span class="url-hint-badge">Facebook</span>
+        <span class="url-hint-badge">Twitch</span>
+      </div>
+    </div>
+
+    <!-- PASO 2: ESTRATEGIA / FORMATO (Aparece automáticamente al poner un enlace) -->
+    <div class="step-box reveal-section" id="step2Box" style="display: none;">
+      <div class="step-header">
+        <div class="step-title">2. ELIGE EL FORMATO</div>
+        <span class="step-tag">PASO 2</span>
+      </div>
+
+      <div class="format-grid">
+        <div class="format-card active" data-mode="allout">
+          <span class="f-tag">MÁS POPULAR</span>
+          <div class="f-title">MÁXIMA CALIDAD</div>
+          <div class="f-desc">1080p / 4K MP4 con mejor audio combinado</div>
         </div>
 
-        <div class="mode-card" data-mode="swift">
-          <span class="mode-tag">ULTRA RÁPIDO</span>
-          <div class="mode-title">SWIFT STRIKE</div>
-          <div class="mode-desc">Descarga Instantánea (720p / 1080p MP4 sin recodificación)</div>
+        <div class="format-card" data-mode="swift">
+          <span class="f-tag">INSTANTÁNEO</span>
+          <div class="f-title">VIDEO RÁPIDO</div>
+          <div class="f-desc">Descarga directa sin esperas de conversión</div>
         </div>
 
-        <div class="mode-card" data-mode="audio">
-          <span class="mode-tag">SOLO AUDIO</span>
-          <div class="mode-title">PERSONA BEAT</div>
-          <div class="mode-desc">Extraer Música en MP3 a 320 kbps con carátula</div>
+        <div class="format-card" data-mode="audio">
+          <span class="f-tag">MÚSICA</span>
+          <div class="f-title">SOLO AUDIO MP3</div>
+          <div class="f-desc">Extrae la canción a 320 kbps con carátula</div>
         </div>
 
-        <div class="mode-card" data-mode="mkv">
-          <span class="mode-tag">ARCHIVAL</span>
-          <div class="mode-title">SHADOW VAULT</div>
-          <div class="mode-desc">Formato MKV Puro con todos los subtítulos y pistas</div>
+        <div class="format-card" data-mode="mkv">
+          <span class="f-tag">COMPLETO</span>
+          <div class="f-title">ARCHIVO MKV</div>
+          <div class="f-desc">Conserva todas las pistas de subtítulos y audio</div>
         </div>
       </div>
 
-      <!-- Turbo & Extra Options -->
-      <div class="extras-row">
+      <!-- Opciones secundarias limpias -->
+      <div class="sub-options-row">
         <label class="extra-item">
           <input type="checkbox" id="chkTurbo" checked>
-          <span>TURBO CMD MULTI-STREAM (-N 16 HILOS)</span>
-          <span class="extra-badge">SUPER RÁPIDO</span>
+          <span>⚡ Acelerador Turbo (-N 16 hilos)</span>
         </label>
         <label class="extra-item">
           <input type="checkbox" id="chkPlaylist">
-          <span>DESCARGAR PLAYLIST COMPLETA</span>
+          <span>Descargar lista de reproducción entera</span>
         </label>
       </div>
 
-      <!-- Big Action Buttons -->
-      <div class="action-triggers">
-        <button class="btn-allout" id="btnExecute">
+      <!-- PASO 3: BOTÓN DE ACCIÓN -->
+      <div class="action-row">
+        <button class="btn-main-allout" id="btnExecute">
           <span>⚔️</span> ¡ROBAR VIDEO AHORA!
         </button>
-        <button class="btn-cmd-window" id="btnNativeCmd" title="Abre una ventana de CMD real en Windows para ver la ejecución">
-          <span>💻</span> ABRIR EN VENTANA CMD
+        <button class="btn-native-cmd" id="btnNativeCmd" title="Abre una ventana de consola real de Windows">
+          <span>💻</span> EN VENTANA CMD
         </button>
       </div>
-
-      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <button class="btn-secondary" id="btnOpenFolder">
-          📂 ABRIR CARPETA DE DESCARGAS
-        </button>
-        <button class="btn-secondary" id="btnCancel" style="display: none; background: #600;">
-          🛑 ABORTAR OPERACIÓN
-        </button>
-      </div>
-    </section>
-
-    <!-- Command Line Preview -->
-    <div class="cmd-preview-card">
-      <div style="color: var(--p5-yellow); font-weight: bold; margin-right: 6px;">CMD></div>
-      <div class="cmd-preview-text" id="cmdPreviewText">yt-dlp ...</div>
-      <button class="btn-copy-small" id="btnCopyCmd">COPIAR COMANDO</button>
     </div>
 
-    <!-- Terminal Console Section -->
-    <div class="terminal-container">
-      <div class="terminal-header">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="color: var(--p5-yellow);">▲</span> TERMINAL CMD PHANTOM // FUTABA HUD
+    <!-- PASO 4: PROGRESO Y DESCARGA ACTIVA (Solo aparece al iniciar la descarga) -->
+    <div class="step-box reveal-section" id="stepProgressBox" style="display: none;">
+      <div class="step-header">
+        <div class="step-title" id="lblProgressTitle">3. DESCARGANDO BOTÍN...</div>
+        <span class="step-tag" id="lblProgressTag">EN CURSO</span>
+      </div>
+
+      <div class="hud-box">
+        <div class="hud-metrics">
+          <div><span class="hud-metric-label">VELOCIDAD: </span><span class="hud-metric-val" id="valSpeed">-- MB/s</span></div>
+          <div><span class="hud-metric-label">TAMAÑO: </span><span class="hud-metric-val" id="valSize">--</span></div>
+          <div><span class="hud-metric-label">TIEMPO: </span><span class="hud-metric-val" id="valEta">--:--</span></div>
         </div>
-        <div class="terminal-dots">
-          <div class="terminal-dot"></div>
-          <div class="terminal-dot"></div>
-          <div class="terminal-dot"></div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+          <div class="progress-text" id="progressText">0%</div>
+        </div>
+
+        <button class="hud-toggle-log" id="btnToggleLog">
+          ▶ Mostrar consola CMD detallada (Opcional)
+        </button>
+
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-line">> Despachando proceso yt-dlp...</div>
         </div>
       </div>
 
-      <!-- Realtime Metrics -->
-      <div class="metrics-bar">
-        <div class="metric-box">
-          <span class="metric-label">ESTADO:</span>
-          <span class="metric-val" id="valStatus">EN ESPERA DE ORDEN</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">VELOCIDAD:</span>
-          <span class="metric-val" id="valSpeed">-- MB/s</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">TAMAÑO:</span>
-          <span class="metric-val" id="valSize">--</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">ETA:</span>
-          <span class="metric-val" id="valEta">--:--</span>
+      <!-- Pantalla de Victoria (Aparece al 100%) -->
+      <div class="victory-card" id="victoryCard" style="display: none;">
+        <div class="victory-title">★ ¡BOTÍN ASEGURADO CON ÉXITO! ★</div>
+        <p style="font-size: 0.85rem; color: #fff; font-weight: 800;">
+          El archivo fue guardado en tu carpeta de descargas de Windows.
+        </p>
+        <div class="victory-actions">
+          <button class="btn-victory-folder" id="btnVictoryFolder">
+            📂 ABRIR CARPETA DE DESCARGAS
+          </button>
+          <button class="btn-victory-again" id="btnVictoryAgain">
+            🔄 DESCARGAR OTRO VIDEO
+          </button>
         </div>
       </div>
+    </div>
 
-      <!-- Animated Progress Bar -->
-      <div class="progress-track">
-        <div class="progress-fill" id="progressBar"></div>
-        <div class="progress-text" id="progressText">0%</div>
-      </div>
-
-      <!-- Live Terminal Log Stream -->
-      <div class="terminal-body" id="terminalBody">
-        <div class="terminal-line cmd">> Sistema local listo. Binarios de yt-dlp y ffmpeg activos.</div>
-        <div class="terminal-line">> Pega una URL y presiona "¡ROBAR VIDEO AHORA!" o "ABRIR EN VENTANA CMD".</div>
+    <!-- SECCIÓN TÉCNICA OPCIONAL (Oculta por defecto para no saturar) -->
+    <div class="collapsible-cmd">
+      <button class="collapsible-cmd-btn" id="btnToggleCmdDetails">
+        <span>⚙️</span> Ver comando CMD técnico generado (Opcional) <span id="arrowCmd">▼</span>
+      </button>
+      <div class="collapsible-cmd-content" id="boxCmdDetails">
+        <div class="cmd-text-box" id="cmdPreviewText">yt-dlp ...</div>
+        <button class="btn-copy-cmd" id="btnCopyCmd">COPIAR COMANDO AL PORTAPAPELES</button>
       </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <div>PERSONA 5 VIDEO DOWNLOADER // MOTOR LOCAL YT-DLP & FFMPEG</div>
-      <div>Guardando en: <span id="lblDestPath" style="color: #fff;">.../Downloads/Persona5_Downloads</span></div>
+      <div>PERSONA 5 // MOTOR LOCAL YT-DLP</div>
+      <div>Guardando en: <span id="lblDestPath" style="color: #fff;">Descargas/Persona5_Descargas</span></div>
     </footer>
   </div>
 
-  <!-- Toast Notification -->
-  <div class="p5-toast" id="p5Toast">
-    <span id="toastIcon">★</span> <span id="toastMsg">¡LISTO!</span>
-  </div>
+  <!-- Toast -->
+  <div class="p5-toast" id="p5Toast">★ ¡LISTO!</div>
 
   <script>
-    // Audio Synthesizer (Persona 5 Sound FX)
+    // Audio Synthesizer (P5 SFX)
     let soundEnabled = true;
     let audioCtx = null;
 
     function getAudioContext() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       return audioCtx;
     }
 
@@ -867,88 +884,85 @@
       try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
-
         if (type === 'click') {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = 'triangle';
           osc.frequency.setValueAtTime(600, now);
-          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.06);
-          gain.gain.setValueAtTime(0.15, now);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.05);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
           osc.connect(gain);
           gain.connect(ctx.destination);
           osc.start(now);
-          osc.stop(now + 0.06);
+          osc.stop(now + 0.05);
         } else if (type === 'allout') {
-          // Persona 5 Slash/Impact Sound
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(220, now);
-          osc.frequency.exponentialRampToValueAtTime(80, now + 0.25);
-          gain.gain.setValueAtTime(0.3, now);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+          osc.frequency.setValueAtTime(260, now);
+          osc.frequency.exponentialRampToValueAtTime(90, now + 0.22);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
           osc.connect(gain);
           gain.connect(ctx.destination);
           osc.start(now);
-          osc.stop(now + 0.25);
+          osc.stop(now + 0.22);
         } else if (type === 'victory') {
-          // P5 All-Out Victory Jingle (arpeggio)
-          const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-          notes.forEach((freq, idx) => {
+          [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-            gain.gain.setValueAtTime(0.2, now + idx * 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.3);
+            osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+            gain.gain.setValueAtTime(0.18, now + idx * 0.07);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.28);
             osc.connect(gain);
             gain.connect(ctx.destination);
-            osc.start(now + idx * 0.08);
-            osc.stop(now + idx * 0.08 + 0.3);
+            osc.start(now + idx * 0.07);
+            osc.stop(now + idx * 0.07 + 0.28);
           });
         }
-      } catch (e) {
-        console.warn('Audio play error:', e);
-      }
+      } catch (e) {}
     }
 
     // UI Elements
     const targetUrlInput = document.getElementById('targetUrl');
     const btnPaste = document.getElementById('btnPaste');
+    const step2Box = document.getElementById('step2Box');
+    const stepProgressBox = document.getElementById('stepProgressBox');
+    const victoryCard = document.getElementById('victoryCard');
     const btnExecute = document.getElementById('btnExecute');
     const btnNativeCmd = document.getElementById('btnNativeCmd');
-    const btnCopyCmd = document.getElementById('btnCopyCmd');
-    const btnOpenFolder = document.getElementById('btnOpenFolder');
-    const btnCancel = document.getElementById('btnCancel');
-    const btnSoundToggle = document.getElementById('btnSoundToggle');
     const chkTurbo = document.getElementById('chkTurbo');
     const chkPlaylist = document.getElementById('chkPlaylist');
-    const cmdPreviewText = document.getElementById('cmdPreviewText');
-    const terminalBody = document.getElementById('terminalBody');
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
-    const valStatus = document.getElementById('valStatus');
     const valSpeed = document.getElementById('valSpeed');
     const valSize = document.getElementById('valSize');
     const valEta = document.getElementById('valEta');
+    const lblProgressTitle = document.getElementById('lblProgressTitle');
+    const lblProgressTag = document.getElementById('lblProgressTag');
+    const terminalBody = document.getElementById('terminalBody');
+    const btnToggleLog = document.getElementById('btnToggleLog');
+    const btnToggleCmdDetails = document.getElementById('btnToggleCmdDetails');
+    const boxCmdDetails = document.getElementById('boxCmdDetails');
+    const cmdPreviewText = document.getElementById('cmdPreviewText');
+    const btnCopyCmd = document.getElementById('btnCopyCmd');
+    const btnSoundToggle = document.getElementById('btnSoundToggle');
+    const btnVictoryFolder = document.getElementById('btnVictoryFolder');
+    const btnVictoryAgain = document.getElementById('btnVictoryAgain');
+    const btnLogoReset = document.getElementById('btnLogoReset');
     const lblDestPath = document.getElementById('lblDestPath');
     const p5Toast = document.getElementById('p5Toast');
-    const toastMsg = document.getElementById('toastMsg');
 
     let currentMode = 'allout';
     let currentJobId = null;
     let sseSource = null;
 
-    // Toast message
-    function showToast(msg, icon = '★') {
-      document.getElementById('toastIcon').textContent = icon;
-      toastMsg.textContent = msg;
+    function showToast(msg) {
+      p5Toast.textContent = '★ ' + msg;
       p5Toast.classList.add('show');
-      setTimeout(() => {
-        p5Toast.classList.remove('show');
-      }, 3000);
+      setTimeout(() => p5Toast.classList.remove('show'), 2600);
     }
 
     // Sound toggle
@@ -959,21 +973,28 @@
       if (soundEnabled) playSound('click');
     });
 
-    // Mode Card Selector
-    document.querySelectorAll('.mode-card').forEach(card => {
-      card.addEventListener('click', () => {
-        playSound('click');
-        document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        currentMode = card.getAttribute('data-mode');
-        updateCmdPreview();
-      });
-    });
+    // Check URL input to progressively reveal Step 2
+    function handleUrlChange() {
+      const val = targetUrlInput.value.trim();
+      if (val.length > 5) {
+        if (step2Box.style.display === 'none') {
+          step2Box.style.display = 'block';
+          playSound('click');
+        }
+      } else {
+        step2Box.style.display = 'none';
+        stepProgressBox.style.display = 'none';
+        victoryCard.style.display = 'none';
+      }
+      updateCmdPreview();
+    }
 
-    // Options changes
-    chkTurbo.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
-    chkPlaylist.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
-    targetUrlInput.addEventListener('input', updateCmdPreview);
+    targetUrlInput.addEventListener('input', handleUrlChange);
+    targetUrlInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && targetUrlInput.value.trim().length > 5) {
+        btnExecute.click();
+      }
+    });
 
     // Paste button
     btnPaste.addEventListener('click', async () => {
@@ -981,8 +1002,8 @@
       try {
         const text = await navigator.clipboard.readText();
         if (text) {
-          targetUrlInput.value = text;
-          updateCmdPreview();
+          targetUrlInput.value = text.trim();
+          handleUrlChange();
           showToast('¡ENLACE PEGADO!');
         }
       } catch (err) {
@@ -990,16 +1011,41 @@
       }
     });
 
-    // Append log line
-    function addLog(text, type = '') {
-      const line = document.createElement('div');
-      line.className = 'terminal-line ' + type;
-      line.textContent = text;
-      terminalBody.appendChild(line);
-      terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
+    // Mode Card Selector
+    document.querySelectorAll('.format-card').forEach(card => {
+      card.addEventListener('click', () => {
+        playSound('click');
+        document.querySelectorAll('.format-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        currentMode = card.getAttribute('data-mode');
+        updateCmdPreview();
+      });
+    });
 
-    // Build options payload
+    chkTurbo.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
+    chkPlaylist.addEventListener('change', () => { playSound('click'); updateCmdPreview(); });
+
+    // Toggle detailed terminal log
+    btnToggleLog.addEventListener('click', () => {
+      terminalBody.classList.toggle('open');
+      btnToggleLog.textContent = terminalBody.classList.contains('open') 
+        ? '▼ Ocultar consola CMD detallada' 
+        : '▶ Mostrar consola CMD detallada (Opcional)';
+    });
+
+    // Toggle technical command details
+    btnToggleCmdDetails.addEventListener('click', () => {
+      boxCmdDetails.classList.toggle('open');
+      document.getElementById('arrowCmd').textContent = boxCmdDetails.classList.contains('open') ? '▲' : '▼';
+    });
+
+    // Copy CMD command
+    btnCopyCmd.addEventListener('click', () => {
+      playSound('click');
+      navigator.clipboard.writeText(cmdPreviewText.textContent);
+      showToast('¡COMANDO COPIADO!');
+    });
+
     function getDownloadOptions() {
       return {
         url: targetUrlInput.value.trim(),
@@ -1009,111 +1055,39 @@
       };
     }
 
-    // Check protocol
-    if (window.location.protocol === 'file:') {
-      const notice = document.getElementById('fileProtocolNotice');
-      if (notice) notice.style.display = 'block';
-    }
-
-    // Build client-side fallback CMD string
-    function buildClientCmdString(opts) {
-      const threads = opts.threads || 16;
-      const playlist = opts.playlist ? "" : "--no-playlist";
-      let fmt = "";
-      if (opts.mode === 'allout') {
-        fmt = '-f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --merge-output-format mp4';
-      } else if (opts.mode === 'swift') {
-        fmt = '-f "b[ext=mp4]/best[ext=mp4]/best"';
-      } else if (opts.mode === 'audio') {
-        fmt = '-x --audio-format mp3 --audio-quality 0';
-      } else if (opts.mode === 'mkv') {
-        fmt = '-f "bv*+ba/b" --merge-output-format mkv';
-      }
-      const target = opts.url ? `"${opts.url}"` : "[ENLACE_DEL_VIDEO]";
-      return `yt-dlp -P "%USERPROFILE%\\Downloads\\Persona5_Descargas" -o "%(title)s.%(ext)s" -N ${threads} --no-mtime --progress ${playlist} ${fmt} ${target}`;
-    }
-
-    // Update CMD Preview
     async function updateCmdPreview() {
       const opts = getDownloadOptions();
-      const localCmd = buildClientCmdString(opts);
-      cmdPreviewText.textContent = localCmd;
+      const target = opts.url || "[ENLACE_DEL_VIDEO]";
+      const playlist = opts.playlist ? "" : "--no-playlist";
+      let fmt = "";
+      if (opts.mode === 'allout') fmt = '-f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --merge-output-format mp4';
+      else if (opts.mode === 'swift') fmt = '-f "b[ext=mp4]/best[ext=mp4]/best"';
+      else if (opts.mode === 'audio') fmt = '-x --audio-format mp3 --audio-quality 0';
+      else if (opts.mode === 'mkv') fmt = '-f "bv*+ba/b" --merge-output-format mkv';
 
-      if (!opts.url || window.location.protocol === 'file:') {
-        return;
-      }
-      try {
-        const res = await fetch('/api/cmd-string', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(opts)
-        });
-        const data = await res.json();
-        if (data && data.ok) {
-          cmdPreviewText.textContent = data.command;
-        }
-      } catch (e) {
-        // Fallback to client-generated command
-      }
+      cmdPreviewText.textContent = `yt-dlp -P "%USERPROFILE%\\Downloads\\Persona5_Descargas" -o "%(title)s.%(ext)s" -N ${opts.threads} --no-mtime --progress ${playlist} ${fmt} "${target}"`;
     }
 
-    // Copy CMD command
-    btnCopyCmd.addEventListener('click', () => {
-      playSound('click');
-      const cmd = cmdPreviewText.textContent;
-      navigator.clipboard.writeText(cmd);
-      showToast('¡COMANDO COPIADO AL PORTAPAPELES!');
-    });
-
-    // Check backend status on load
-    async function checkStatus() {
-      try {
-        const res = await fetch('/api/status');
-        const data = await res.json();
-        if (data.ok) {
-          lblDestPath.textContent = data.downloadsDir;
-          addLog(`[INICIALIZADO] Motor: yt-dlp OK | FFmpeg: ${data.ffmpeg ? 'OK' : 'NO'}`);
-          addLog(`[RUTA DESTINO] ${data.downloadsDir}`);
-        }
-      } catch (e) {
-        addLog('[ERROR] No se pudo conectar con el servidor local.', 'err');
-      }
+    function addLog(text) {
+      const line = document.createElement('div');
+      line.className = 'terminal-line';
+      line.textContent = text;
+      terminalBody.appendChild(line);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
     }
-
-    // Open Downloads Folder
-    btnOpenFolder.addEventListener('click', async () => {
-      playSound('click');
-      try {
-        await fetch('/api/open-folder', { method: 'POST' });
-        showToast('CARPETA DE DESCARGAS ABIERTA');
-      } catch (e) {
-        showToast('ERROR AL ABRIR CARPETA');
-      }
-    });
 
     // Launch in Native CMD Window
     btnNativeCmd.addEventListener('click', async () => {
       const opts = getDownloadOptions();
-      if (!opts.url) {
-        showToast('INGRESA UNA URL PRIMERO');
-        targetUrlInput.focus();
-        return;
-      }
+      if (!opts.url) return;
       playSound('allout');
       try {
-        addLog('[CMD NATIVO] Despachando ventana de comando de Windows...', 'cmd');
-        const res = await fetch('/api/launch-cmd', {
+        await fetch('/api/launch-cmd', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(opts)
         });
-        const data = await res.json();
-        if (data.ok) {
-          showToast('¡VENTANA DE CMD ABIERTA!');
-          addLog('[CMD NATIVO] La descarga continuará en la consola de Windows.', 'success');
-        } else {
-          showToast('ERROR: ' + data.error);
-        }
+        showToast('¡VENTANA DE CMD ABIERTA!');
       } catch (e) {
         showToast('ERROR AL ABRIR CMD');
       }
@@ -1122,22 +1096,22 @@
     // Execute Download (In-App Stream)
     btnExecute.addEventListener('click', async () => {
       const opts = getDownloadOptions();
-      if (!opts.url) {
-        showToast('INGRESA UNA URL PRIMERO');
-        targetUrlInput.focus();
-        return;
-      }
+      if (!opts.url) return;
 
       playSound('allout');
       btnExecute.disabled = true;
-      btnCancel.style.display = 'inline-block';
-      valStatus.textContent = 'ROBANDO CONTENIDO...';
-      valStatus.style.color = 'var(--p5-yellow)';
+      stepProgressBox.style.display = 'block';
+      victoryCard.style.display = 'none';
+      lblProgressTitle.textContent = '3. DESCARGANDO BOTÍN...';
+      lblProgressTag.textContent = 'EN CURSO';
+      lblProgressTag.style.background = 'var(--p5-yellow)';
       progressBar.style.width = '0%';
       progressText.textContent = '0%';
+      terminalBody.innerHTML = '';
+      addLog(`[ALL-OUT ATTACK] Iniciando descarga para: ${opts.url}`);
 
-      addLog('------------------------------------------------------------');
-      addLog(`[ALL-OUT ATTACK] Iniciando descarga: ${opts.url}`, 'cmd');
+      // Smooth scroll to progress
+      stepProgressBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       try {
         const res = await fetch('/api/download', {
@@ -1147,42 +1121,37 @@
         });
         const data = await res.json();
         if (!data.ok) {
-          addLog('[ERROR] ' + data.error, 'err');
           btnExecute.disabled = false;
-          btnCancel.style.display = 'none';
-          valStatus.textContent = 'ERROR EN OPERACIÓN';
-          valStatus.style.color = 'var(--p5-red)';
+          lblProgressTitle.textContent = 'ERROR EN DESCARGA';
+          lblProgressTag.textContent = 'FALLO';
+          lblProgressTag.style.background = 'var(--p5-red)';
+          showToast('ERROR AL INICIAR');
           return;
         }
 
         currentJobId = data.jobId;
         connectSSE(currentJobId);
       } catch (err) {
-        addLog('[ERROR] Fallo de conexión: ' + err.message, 'err');
         btnExecute.disabled = false;
-        btnCancel.style.display = 'none';
+        showToast('ERROR DE CONEXIÓN');
       }
     });
 
     // SSE Stream
     function connectSSE(jobId) {
-      if (sseSource) {
-        sseSource.close();
-      }
-
+      if (sseSource) sseSource.close();
       sseSource = new EventSource(`/api/stream?jobId=${jobId}`);
 
       sseSource.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
-
           if (data.type === 'init') {
             data.logs.forEach(l => addLog(l));
           } else if (data.type === 'log') {
             addLog(data.line);
             if (data.percent !== undefined) {
               progressBar.style.width = data.percent + '%';
-              progressText.textContent = data.percent + '%';
+              progressText.textContent = Math.round(data.percent) + '%';
             }
             if (data.speed) valSpeed.textContent = data.speed;
             if (data.size) valSize.textContent = data.size;
@@ -1190,49 +1159,65 @@
           } else if (data.type === 'done') {
             sseSource.close();
             btnExecute.disabled = false;
-            btnCancel.style.display = 'none';
 
             if (data.code === 0) {
               progressBar.style.width = '100%';
-              progressText.textContent = '100% COMPLETE';
-              valStatus.textContent = '¡BOTÍN ASEGURADO!';
-              valStatus.style.color = '#2eff8b';
-              addLog('★ [TAKE YOUR HEART] ¡Descarga finalizada con éxito!', 'success');
+              progressText.textContent = '100% COMPLETADO';
+              lblProgressTitle.textContent = '★ ¡DESCARGA FINALIZADA!';
+              lblProgressTag.textContent = 'ÉXITO';
+              lblProgressTag.style.background = '#2eff8b';
+              victoryCard.style.display = 'block';
               playSound('victory');
-              showToast('¡DESCARGA COMPLETADA CON ÉXITO!');
+              showToast('¡DESCARGA COMPLETADA!');
+              victoryCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
-              valStatus.textContent = 'MISIÓN FALLIDA (' + data.code + ')';
-              valStatus.style.color = 'var(--p5-red)';
-              addLog(`[FINALIZADO] Código de salida: ${data.code}`, 'err');
+              lblProgressTitle.textContent = 'ERROR EN LA OPERACIÓN (' + data.code + ')';
+              lblProgressTag.textContent = 'ERROR';
+              lblProgressTag.style.background = 'var(--p5-red)';
+              terminalBody.classList.add('open'); // Open terminal to show error
             }
           }
-        } catch (e) {
-          console.error(e);
-        }
-      };
-
-      sseSource.onerror = () => {
-        // SSE disconnected or done
+        } catch (e) {}
       };
     }
 
-    // Cancel Job
-    btnCancel.addEventListener('click', async () => {
+    // Open Downloads Folder
+    btnVictoryFolder.addEventListener('click', async () => {
       playSound('click');
-      if (currentJobId) {
-        await fetch('/api/cancel', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ jobId: currentJobId })
-        });
-        showToast('MISIÓN ABORTADA');
-        btnCancel.style.display = 'none';
-        btnExecute.disabled = false;
-        valStatus.textContent = 'OPERACIÓN CANCELADA';
-      }
+      try {
+        await fetch('/api/open-folder', { method: 'POST' });
+        showToast('CARPETA ABIERTA');
+      } catch (e) {}
     });
 
-    // Init
+    // Reset for another video
+    function resetUi() {
+      playSound('click');
+      targetUrlInput.value = '';
+      step2Box.style.display = 'none';
+      stepProgressBox.style.display = 'none';
+      victoryCard.style.display = 'none';
+      btnExecute.disabled = false;
+      progressBar.style.width = '0%';
+      progressText.textContent = '0%';
+      targetUrlInput.focus();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    btnVictoryAgain.addEventListener('click', resetUi);
+    btnLogoReset.addEventListener('click', resetUi);
+
+    // Initial status check
+    async function checkStatus() {
+      try {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        if (data && data.ok) {
+          lblDestPath.textContent = data.downloadsDir;
+        }
+      } catch (e) {}
+    }
+
     checkStatus();
     updateCmdPreview();
   </script>
