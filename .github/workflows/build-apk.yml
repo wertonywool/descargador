@@ -1,0 +1,76 @@
+name: Compilar APK Android Persona 5
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Compilar APK Autónomo (yt-dlp)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar Código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Otorgar permisos a gradlew si existe
+        run: |
+          if [ -f "android/gradlew" ]; then
+            chmod +x android/gradlew
+          fi
+
+      - name: Compilar APK con Gradle
+        working-directory: android
+        run: |
+          gradle assembleDebug --stacktrace
+
+      - name: Renombrar APK
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk Persona5-Downloader.apk
+
+      - name: Subir APK como Artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Persona5-Downloader-APK
+          path: Persona5-Downloader.apk
+
+      - name: Publicar Release Automática
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/heads/main')
+        with:
+          tag_name: android-latest
+          name: "Persona 5 Video Downloader - APK Android"
+          body: |
+            ### 📱 ¡APK Autónomo para Android Listo para Descargar!
+            
+            Este APK funciona **100% de forma autónoma en tu celular**:
+            - ⚡ Motor `yt-dlp` local integrado (sin servidores externos).
+            - 🎨 Interfaz temática de **Persona 5**.
+            - 📁 Guarda los videos directamente en la carpeta **Descargas** de tu teléfono.
+            - 🔗 Soporta botón "Compartir" directo desde YouTube, TikTok, etc.
+            
+            **Instalación:**
+            1. Descarga el archivo `Persona5-Downloader.apk` de aquí abajo en tu celular.
+            2. Tócalo e instálalo (si te pide permiso para fuentes desconocidas, dale aceptar).
+            3. ¡Listo! A robar videos a máxima velocidad.
+          files: Persona5-Downloader.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -13,8 +13,21 @@
   <img src="https://img.shields.io/badge/Persona_5-Take_Your_Heart-e60012?style=for-the-badge" alt="Persona 5" />
   <img src="https://img.shields.io/badge/Motor-yt--dlp_Turbo-ffe600?style=for-the-badge&logoColor=black" alt="yt-dlp" />
   <img src="https://img.shields.io/badge/Plataforma-Windows_10_/_11-0078d7?style=for-the-badge&logo=windows" alt="Windows" />
+  <img src="https://img.shields.io/badge/Android-APK_Aut%C3%B3nomo-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK" />
   <img src="https://img.shields.io/badge/Dependencias-Cero_(Auto--instalable)-2eff8b?style=for-the-badge" alt="Zero Dependencies" />
 </p>
+
+---
+
+## 📱 ¿Quieres usarlo en tu celular Android? (APK Autónomo)
+
+¡Ahora también cuenta con una versión en APK para Android totalmente autónoma! **No depende de servidores externos ni de computadoras encendidas**: tu teléfono descarga los videos directamente con su propio motor local.
+
+### 📥 Descargar APK para Android:
+1. Ve a la sección de **[Releases de este repositorio](https://github.com/wertonywool/descargador/releases)** desde tu celular.
+2. Descarga el archivo **`Persona5-Downloader.apk`**.
+3. Tócalo e instálalo en tu Android.
+4. *(Opcional)* Cuando estés viendo un video en **YouTube, TikTok o Instagram**, toca el botón **"Compartir"** y elige **Persona 5 Downloader**: ¡el video se cargará automáticamente listo para descargar!
 
 ---
 

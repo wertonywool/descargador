@@ -1113,6 +1113,12 @@
       // Smooth scroll to progress
       stepProgressBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+      // If running inside Native Android APK
+      if (typeof window.AndroidBridge !== 'undefined') {
+        window.AndroidBridge.download(JSON.stringify(opts));
+        return;
+      }
+
       try {
         const res = await fetch('/api/download', {
           method: 'POST',
@@ -1184,11 +1190,57 @@
     // Open Downloads Folder
     btnVictoryFolder.addEventListener('click', async () => {
       playSound('click');
+      if (typeof window.AndroidBridge !== 'undefined') {
+        window.AndroidBridge.openFolder();
+        return;
+      }
       try {
         await fetch('/api/open-folder', { method: 'POST' });
         showToast('CARPETA ABIERTA');
       } catch (e) {}
     });
+
+    // Native Android Integration
+    const isAndroid = typeof window.AndroidBridge !== 'undefined';
+    if (isAndroid) {
+      document.querySelector('footer div').textContent = "PERSONA 5 // MOTOR ANDROID YT-DLP EMBEBIDO";
+    }
+
+    // Android Callbacks
+    window.setSharedUrl = function(url) {
+      targetUrlInput.value = url;
+      handleUrlChange();
+      showToast('¡ENLACE RECIBIDO!');
+    };
+
+    window.updateAndroidProgress = function(percent, speed, eta, status) {
+      progressBar.style.width = percent + '%';
+      progressText.textContent = Math.round(percent) + '%';
+      if (speed) valSpeed.textContent = speed;
+      if (eta) valEta.textContent = eta;
+      addLog(`[DESCARGANDO] ${Math.round(percent)}% - ${speed}`);
+    };
+
+    window.onAndroidComplete = function(success, message) {
+      btnExecute.disabled = false;
+      if (success) {
+        progressBar.style.width = '100%';
+        progressText.textContent = '100% COMPLETADO';
+        lblProgressTitle.textContent = '★ ¡BOTÍN ASEGURADO!';
+        lblProgressTag.textContent = 'ÉXITO';
+        lblProgressTag.style.background = '#2eff8b';
+        victoryCard.style.display = 'block';
+        playSound('victory');
+        showToast('¡DESCARGA COMPLETADA!');
+        victoryCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        lblProgressTitle.textContent = 'ERROR EN LA OPERACIÓN';
+        lblProgressTag.textContent = 'ERROR';
+        lblProgressTag.style.background = 'var(--p5-red)';
+        addLog('[ERROR] ' + message);
+        terminalBody.classList.add('open');
+      }
+    };
 
     // Reset for another video
     function resetUi() {
