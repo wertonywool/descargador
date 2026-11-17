@@ -4,7 +4,7 @@ const path = require('path');
 const os = require('os');
 const { spawn, exec } = require('child_process');
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 7777;
 const ROOT_DIR = __dirname;
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const BIN_DIR = path.join(ROOT_DIR, 'bin');
@@ -373,10 +373,10 @@ const server = http.createServer((req, res) => {
 });
 
 // Port finder with automatic browser opener
-function startServer(portToTry, attemptsLeft = 10) {
+function startServer(portToTry, attemptsLeft = 20) {
   server.once('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-      console.log(`[AVISO] Puerto ${portToTry} ocupado. Probando puerto ${portToTry + 1}...`);
+    if (err.code === 'EADDRINUSE' || err.code === 'EACCES') {
+      console.log(`[AVISO] Puerto ${portToTry} no disponible (${err.code}). Probando puerto ${portToTry + 1}...`);
       if (attemptsLeft > 0) {
         startServer(portToTry + 1, attemptsLeft - 1);
       } else {

@@ -57,7 +57,7 @@ Entra a la carpeta descargada y haz doble clic en:
 ¡Listo! El script hará todo automáticamente:
 1. Verificará e instalará `yt-dlp.exe` automáticamente si no está presente.
 2. Creará el acceso directo **«Persona 5 - Descargador de Videos»** con su icono personalizado en tu Escritorio.
-3. Iniciará el servidor local y abrirá la interfaz en tu navegador predeterminado (`http://127.0.0.1:5050`).
+3. Iniciará el servidor local y abrirá la interfaz en tu navegador predeterminado (`http://127.0.0.1:7777`).
 
 ---
 

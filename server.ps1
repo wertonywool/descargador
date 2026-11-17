@@ -15,8 +15,8 @@ if (-not (Test-Path $downloadsDir)) {
 }
 
 $listener = $null
-$port = 5050
-while ($port -le 5065) {
+$port = 7777
+while ($port -le 7800) {
     try {
         $prefix = "http://127.0.0.1:$port/"
         $testListener = New-Object System.Net.HttpListener
@@ -30,7 +30,7 @@ while ($port -le 5065) {
 }
 
 if (-not $listener) {
-    Write-Error "No se pudo encontrar un puerto libre entre 5050 y 5065."
+    Write-Error "No se pudo encontrar un puerto libre entre 7777 y 7800."
     exit 1
 }
 
