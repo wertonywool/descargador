@@ -45,13 +45,13 @@ jobs:
           set -o pipefail
           gradle assembleDebug --stacktrace --no-daemon 2>&1 | tee ../build.log
 
-      - name: Mostrar registro en Resumen
+      - name: Mostrar registro completo en Resumen
         if: always()
         run: |
           if [ -f "build.log" ]; then
-            echo "### 📋 Registro de Compilación Gradle (Últimas 60 líneas):" >> $GITHUB_STEP_SUMMARY
+            echo "### 📋 Registro Completo de Compilación Gradle:" >> $GITHUB_STEP_SUMMARY
             echo '```text' >> $GITHUB_STEP_SUMMARY
-            tail -n 60 build.log >> $GITHUB_STEP_SUMMARY
+            cat build.log >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
