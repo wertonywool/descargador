@@ -40,24 +40,26 @@ jobs:
 
       - name: Compilar APK con Gradle
         working-directory: android
+        shell: bash
         run: |
+          set -o pipefail
           gradle assembleDebug --stacktrace --no-daemon 2>&1 | tee ../build.log
 
-      - name: Mostrar detalles si falla la compilación
-        if: failure()
+      - name: Mostrar registro en Resumen
+        if: always()
         run: |
           if [ -f "build.log" ]; then
-            echo "### ❌ Error durante la compilación de Gradle:" >> $GITHUB_STEP_SUMMARY
+            echo "### 📋 Registro de Compilación Gradle (Últimas 60 líneas):" >> $GITHUB_STEP_SUMMARY
             echo '```text' >> $GITHUB_STEP_SUMMARY
-            grep -E "FAILURE|ERROR|Exception|Caused by:" -B 2 -A 8 build.log | head -n 40 >> $GITHUB_STEP_SUMMARY || tail -n 40 build.log >> $GITHUB_STEP_SUMMARY
+            tail -n 60 build.log >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Subir log en caso de fallo
-        if: failure()
+      - name: Subir log completo
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gradle-error-log
+          name: gradle-full-log
           path: build.log
 
       - name: Renombrar APK
