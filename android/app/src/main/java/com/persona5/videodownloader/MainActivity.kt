@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                             activity.runOnUiThread {
                                 if (success) {
                                     // Exportar los archivos descargados a la carpeta pública Descargas/Persona5_Descargas
-                                    val exportedCount = exportFilesToPublicDownloads(stagingDir)
+                                    val exportedCount = this@MainActivity.exportFilesToPublicDownloads(stagingDir)
                                     val finalMsg = if (exportedCount > 0) {
                                         "¡Video guardado con éxito en tu carpeta Descargas / Persona5_Descargas!"
                                     } else {
@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun exportFilesToPublicDownloads(sourceDir: File): Int {
+    fun exportFilesToPublicDownloads(sourceDir: File): Int {
         val files = sourceDir.listFiles() ?: return 0
         var count = 0
         for (file in files) {
@@ -191,7 +191,7 @@ class MainActivity : AppCompatActivity() {
         return count
     }
 
-    private fun saveToPublicDownloads(context: Context, sourceFile: File): Boolean {
+    fun saveToPublicDownloads(context: Context, sourceFile: File): Boolean {
         val fileName = sourceFile.name
         val resolver = context.contentResolver
         val mimeType = when {
