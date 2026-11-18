@@ -1203,7 +1203,19 @@
     // Native Android Integration
     const isAndroid = typeof window.AndroidBridge !== 'undefined';
     if (isAndroid) {
-      document.querySelector('footer div').textContent = "PERSONA 5 // MOTOR ANDROID YT-DLP EMBEBIDO";
+      document.querySelector('footer div').textContent = "PERSONA 5 // MOTOR LOCAL ANDROID (AUTÓNOMO, SIN CMD)";
+      if (btnNativeCmd) btnNativeCmd.style.display = 'none';
+      const cmdBox = document.querySelector('.collapsible-cmd');
+      if (cmdBox) cmdBox.style.display = 'none';
+      const hints = document.querySelector('.url-hints');
+      if (hints) {
+        const androidBadge = document.createElement('span');
+        androidBadge.className = 'url-hint-badge';
+        androidBadge.style.background = 'var(--p5-red)';
+        androidBadge.style.color = '#fff';
+        androidBadge.textContent = '📱 Motor Nativo Autónomo';
+        hints.prepend(androidBadge);
+      }
     }
 
     // Android Callbacks
@@ -1218,7 +1230,10 @@
       progressText.textContent = Math.round(percent) + '%';
       if (speed) valSpeed.textContent = speed;
       if (eta) valEta.textContent = eta;
-      addLog(`[DESCARGANDO] ${Math.round(percent)}% - ${speed}`);
+      if (status) {
+        lblProgressTag.textContent = status.toUpperCase();
+        addLog(`[ESTADO] ${status} (${Math.round(percent)}% - ${speed})`);
+      }
     };
 
     window.onAndroidComplete = function(success, message) {
@@ -1232,10 +1247,11 @@
         victoryCard.style.display = 'block';
         playSound('victory');
         showToast('¡DESCARGA COMPLETADA!');
+        addLog('[ÉXITO] ' + message);
         victoryCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } else {
         lblProgressTitle.textContent = 'ERROR EN LA OPERACIÓN';
-        lblProgressTag.textContent = 'ERROR';
+        lblProgressTag.textContent = 'FALLO';
         lblProgressTag.style.background = 'var(--p5-red)';
         addLog('[ERROR] ' + message);
         terminalBody.classList.add('open');
