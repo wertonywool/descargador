@@ -18,6 +18,11 @@ import com.chaquo.python.android.AndroidPlatform
 import org.json.JSONObject
 import java.io.File
 
+interface DownloadCallback {
+    fun onProgress(percent: Double, speed: String, eta: String, status: String)
+    fun onComplete(success: Boolean, message: String)
+}
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var webView: WebView
@@ -101,15 +106,15 @@ class MainActivity : AppCompatActivity() {
                     val py = Python.getInstance()
                     val module = py.getModule("downloader")
 
-                    val callback = object {
-                        fun onProgress(percent: Double, speed: String, eta: String, status: String) {
+                    val callback = object : DownloadCallback {
+                        override fun onProgress(percent: Double, speed: String, eta: String, status: String) {
                             activity.runOnUiThread {
                                 val script = "if (window.updateAndroidProgress) { window.updateAndroidProgress($percent, '$speed', '$eta', '$status'); }"
                                 webView.evaluateJavascript(script, null)
                             }
                         }
 
-                        fun onComplete(success: Boolean, message: String) {
+                        override fun onComplete(success: Boolean, message: String) {
                             activity.runOnUiThread {
                                 val escapedMsg = message.replace("'", "\\'")
                                 val script = "if (window.onAndroidComplete) { window.onAndroidComplete($success, '$escapedMsg'); }"
